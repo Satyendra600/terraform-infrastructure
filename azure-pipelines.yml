@@ -32,3 +32,11 @@ stages:
         backendAzureRmStorageAccountName: 'javastg'
         backendAzureRmContainerName: 'java-container'
         backendAzureRmKey: 'terraform state file'
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'custom'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+        outputTo: 'console'
+        customCommand: 'fmt'
+        environmentServiceNameAzureRM: 'java-service-connection'
