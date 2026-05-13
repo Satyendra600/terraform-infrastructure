@@ -16,3 +16,19 @@ stages:
     - task: TerraformInstaller@1
       inputs:
         terraformVersion: 'latest'
+- stage: terraform_init
+  displayName: teraform init
+  jobs:
+  - job: terraform_init
+    displayName: terraform_init_job
+    steps:
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+        backendServiceArm: 'java-service-connection'
+        backendAzureRmResourceGroupName: 'java_RG'
+        backendAzureRmStorageAccountName: 'javastg'
+        backendAzureRmContainerName: 'java-container'
+        backendAzureRmKey: 'terraform state file'
