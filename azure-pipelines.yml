@@ -63,4 +63,12 @@ stages:
         command: 'plan'
         workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
         environmentServiceNameAzureRM: 'java-service-connection'
-    
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+        backendAzureRmResourceGroupName: 'java_RG'
+        backendAzureRmStorageAccountName: 'javastg'
+        backendAzureRmContainerName: 'java-container'
+        backendAzureRmKey: 'terraform state file'
