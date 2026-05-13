@@ -72,3 +72,15 @@ stages:
         backendAzureRmStorageAccountName: 'javastg'
         backendAzureRmContainerName: 'java-container'
         backendAzureRmKey: 'terraform state file'
+
+- stage: approval
+  displayName: Approval & Governance Stage
+  jobs:
+  - job:  Manual_Approval
+    displayName:  Manual Approval
+    pool: server
+    steps:
+    - task: ManualValidation@1
+      inputs:
+        notifyUsers: 'ssatyendra081@gmail.com'
+        onTimeout: 'resume'
