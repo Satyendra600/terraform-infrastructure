@@ -11,7 +11,7 @@ stages:
   displayName: terraform install
   jobs:
   - job: install
-    displayName: terraform_init_job
+    displayName: terraform_install_job
     steps:
     - task: TerraformInstaller@1
       inputs:
