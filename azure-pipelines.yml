@@ -1,14 +1,18 @@
+trigger:
+- main
+
+pool:
+  name: java-agent
+
+
+
 stages:
-- stage: terraforminstall
-  displayName: Terraform Install
+- stage: terraform_install
+  displayName: terraform install
   jobs:
-  - job: terraforminstall
-    displayName: Install Terraform Job
+  - job: install
+    displayName: terraform_init_job
     steps:
-
-    - checkout: self
-
     - task: TerraformInstaller@1
-      displayName: Install Terraform
       inputs:
-        terraformVersion: '1.6.0'
+        terraformVersion: 'latest'
